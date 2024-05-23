@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,18 +11,72 @@
             font-family: 'shaonuxinshishouzhangben';
             src: url('./fonts/少女心事手账本.ttf') format('truetype');
         }
+
         @font-face {
             font-family: 'zixiaohunqingqingziyinti';
             src: url('./fonts/字小魂青青子吟体.ttf') format('truetype');
         }
+
         @font-face {
             font-family: 'wangqiangshufati';
             src: url('./fonts/王强书法体.ttf') format('truetype');
         }
+
         @font-face {
             font-family: 'duanningyingbikaishucuti';
             src: url('./fonts/段宁硬笔楷书粗体.ttf') format('truetype');
         }
+
+        /* Define background colors */
+        .bg-ivory {
+            background-color: #FFFFF0;
+        }
+
+        .bg-beige {
+            background-color: #F5F5DC;
+        }
+
+        .bg-lightyellow {
+            background-color: #FFFFE0;
+        }
+
+        .bg-lightblue {
+            background-color: #E0FFFF;
+        }
+
+        .bg-lightpink {
+            background-color: #FFB6C1;
+        }
+
+        .bg-lightgreen {
+            background-color: #98FB98;
+        }
+
+        .bg-lightgray {
+            background-color: #D3D3D3;
+        }
+
+        .flex.flex-wrap.justify-center.space-x-4 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .flex.flex-wrap.justify-center.space-x-4 label {
+            display: flex;
+            align-items: center;
+        }
+
+        .flex.flex-wrap.justify-center.space-x-4 input[type="radio"]:checked+div {
+            border-color: #2563eb;
+            /* Blue color */
+            box-shadow: 0 0 0 1px #2563eb;
+            /* Blue shadow */
+        }
+
+
         .lined-paper {
             padding: 20px;
             box-sizing: border-box;
@@ -33,7 +88,11 @@
             text-align: left;
             backdrop-filter: blur(10px);
         }
-        .katex, .katex .katex-mathml, .katex .katex-html, .katex .katex-mathml * {
+
+        .katex,
+        .katex .katex-mathml,
+        .katex .katex-html,
+        .katex .katex-mathml * {
             font-family: 'shaonuxinshishouzhangben', cursive !important;
             font-size: 24px !important;
             line-height: 24px !important;
@@ -42,13 +101,16 @@
     <!-- KaTeX CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
 </head>
+
 <body class="bg-gradient-to-r from-pink-300 to-blue-300 min-h-screen flex items-center justify-center p-6">
-    <div id="container" class="bg-white bg-opacity-30 backdrop-blur-lg shadow-lg rounded-lg p-8 max-w-5xl w-full text-center"> 
+    <div id="container"
+        class="bg-white bg-opacity-30 backdrop-blur-lg shadow-lg rounded-lg p-8 max-w-5xl w-full text-center">
         <h1 class="text-4xl font-bold mb-6 text-white">Markdown to Handwriting</h1>
 
         <div class="mb-4">
             <label for="font-select" class="block text-white text-sm font-bold mb-2">Choose a font:</label>
-            <select id="font-select" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <select id="font-select"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                 <option value="shaonuxinshishouzhangben">少女心事手账本</option>
                 <option value="zixiaohunqingqingziyinti">字小魂青青子吟体</option>
                 <option value="wangqiangshufati">王强书法体</option>
@@ -57,42 +119,60 @@
         </div>
 
         <div class="mb-4">
-            <label for="background-color" class="block text-white text-sm font-bold mb-2">Choose a background color:</label>
-            <div class="flex space-x-2">
-                <div class="flex items-center">
-                    <input type="radio" id="bg-white" name="background-color" value="#FFFFFF" class="mr-2">
-                    <label for="bg-white" class="text-white">White</label>
-                </div>
-                <div class="flex items-center">
-                    <input type="radio" id="bg-ivory" name="background-color" value="#FFFFF0" class="mr-2">
-                    <label for="bg-ivory" class="text-white">Ivory</label>
-                </div>
-                <div class="flex items-center">
-                    <input type="radio" id="bg-beige" name="background-color" value="#F5F5DC" class="mr-2" checked>
-                    <label for="bg-beige" class="text-white">Beige</label>
-                </div>
-                <div class="flex items-center">
-                    <input type="radio" id="bg-lightyellow" name="background-color" value="#FFFFE0" class="mr-2">
-                    <label for="bg-lightyellow" class="text-white">Light Yellow</label>
-                </div>
-                <div class="flex items-center">
-                    <input type="radio" id="bg-lightblue" name="background-color" value="#E0FFFF" class="mr-2">
-                    <label for="bg-lightblue" class="text-white">Light Blue</label>
-                </div>
+            <label for="background-color" class="block text-white text-sm font-bold mb-2">Choose a background
+                color:</label>
+            <div class="flex flex-wrap justify-center space-x-4">
+                <label class="cursor-pointer">
+                    <input type="radio" id="bg-white" name="background-color" value="#FFFFFF" class="hidden">
+                    <div class="w-6 h-6 rounded-full bg-white border-2 border-gray-300"></div>
+                </label>
+                <label class="cursor-pointer">
+                    <input type="radio" id="bg-ivory" name="background-color" value="#FFFFF0" class="hidden">
+                    <div class="w-6 h-6 rounded-full bg-ivory border-2 border-gray-300"></div>
+                </label>
+                <label class="cursor-pointer">
+                    <input type="radio" id="bg-beige" name="background-color" value="#F5F5DC" class="hidden" checked>
+                    <div class="w-6 h-6 rounded-full bg-beige border-2 border-gray-300"></div>
+                </label>
+                <label class="cursor-pointer">
+                    <input type="radio" id="bg-lightyellow" name="background-color" value="#FFFFE0" class="hidden">
+                    <div class="w-6 h-6 rounded-full bg-lightyellow border-2 border-gray-300"></div>
+                </label>
+                <label class="cursor-pointer">
+                    <input type="radio" id="bg-lightblue" name="background-color" value="#E0FFFF" class="hidden">
+                    <div class="w-6 h-6 rounded-full bg-lightblue border-2 border-gray-300"></div>
+                </label>
+                <label class="cursor-pointer">
+                    <input type="radio" id="bg-lightpink" name="background-color" value="#FFB6C1" class="hidden">
+                    <div class="w-6 h-6 rounded-full bg-lightpink border-2 border-gray-300"></div>
+                </label>
+                <label class="cursor-pointer">
+                    <input type="radio" id="bg-lightgreen" name="background-color" value="#98FB98" class="hidden">
+                    <div class="w-6 h-6 rounded-full bg-lightgreen border-2 border-gray-300"></div>
+                </label>
+                <label class="cursor-pointer">
+                    <input type="radio" id="bg-lightgray" name="background-color" value="#D3D3D3" class="hidden">
+                    <div class="w-6 h-6 rounded-full bg-lightgray border-2 border-gray-300"></div>
+                </label>
             </div>
         </div>
 
-        <textarea id="markdown-input" class="w-full h-48 p-4 mb-6 text-lg rounded-lg shadow-inner resize-none" placeholder="Enter Markdown text here..."></textarea>
+        <textarea id="markdown-input" class="w-full h-48 p-4 mb-6 text-lg rounded-lg shadow-inner resize-none"
+            placeholder="Enter Markdown text here..."></textarea>
         <div id="rendered-output" class="lined-paper mb-6 hidden"></div>
-        <button id="render-button" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-600 transition">Render Handwriting</button>
-        <button id="download-button" class="bg-green-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-600 transition mt-4">Download as Image</button>
+        <button id="render-button"
+            class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-600 transition">Render
+            Handwriting</button>
+        <button id="download-button"
+            class="bg-green-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-600 transition mt-4">Download
+            as Image</button>
         <canvas id="canvas" class="hidden"></canvas>
     </div>
 
     <!-- Marked.js and KaTeX Script -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script>
-    
+
     <script>
         const fontSelect = document.getElementById('font-select');
         const backgroundColorInputs = document.querySelectorAll('input[name="background-color"]');
@@ -116,20 +196,15 @@
 
         function updateOutputStyle() {
             const selectedFont = fontSelect.value;
-            let backgroundColor;
-            backgroundColorInputs.forEach(input => {
-                if (input.checked) {
-                    backgroundColor = input.value;
-                }
-            });
+            const selectedColor = document.querySelector('input[name="background-color"]:checked').value;
 
-    renderedOutput.style.fontFamily = `'${selectedFont}', cursive`;
-    renderedOutput.style.background = `repeating-linear-gradient(
-        to bottom,
-        ${backgroundColor},
-        ${backgroundColor} 27px,
-        rgba(204, 204, 204, 0.8) 28px
-    )`;
+            renderedOutput.style.fontFamily = `'${selectedFont}', cursive`;
+            renderedOutput.style.background = `repeating-linear-gradient(
+                to bottom,
+                ${selectedColor},
+                ${selectedColor} 27px,
+                rgba(204, 204, 204, 0.8) 28px
+            )`;
         }
 
         fontSelect.addEventListener('change', updateOutputStyle);
@@ -199,4 +274,5 @@
         });
     </script>
 </body>
+
 </html>
